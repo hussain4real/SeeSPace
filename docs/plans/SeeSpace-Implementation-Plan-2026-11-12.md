@@ -1,6 +1,6 @@
 # SeeSpace implementation plan
 
-Version 1.0 • 12 November 2026 • Planning baseline for Aminu
+Version 1.1 • 12 November 2026 • Planning baseline and orchestration map for Aminu
 
 ## Direction and how to use this plan
 
@@ -24,8 +24,8 @@ Read on the Mac on 12 November: AGENTS.md, composer.json, package.json, resource
 - Existing Laravel/Inertia/Vue/TypeScript/Tailwind scaffold; Fortify, passkeys, Reka UI and Wayfinder dependencies. Preserve auth, settings and team flows rather than generating parallel versions.
 - `app.ts` uses AppLayout by default, AuthLayout for auth, and AppLayout/SettingsLayout for settings and teams. Only Welcome currently has no layout. Public marketplace pages need an explicit public-layout rule; they must not inherit team navigation or an auth requirement.
 - The dashboard is under `{current_team}` with authentication, verification and membership middleware. Team Owner/Admin/Member must not silently become landlord/agent/moderator authority.
-- composer.json requires PHP `^8.6`; local CLI reports PHP `8.5.12`; AGENTS.md describes PHP 8.5. Reconcile this before relying on installs, migrations or backend tests. Do not bypass platform checks or silently lower requirements.
-- `git status` reports this directory is not a Git repository. Establish an approved local baseline/version-control approach before implementation. No Git initialization, remote creation or push was performed here.
+- composer.json requires PHP `^8.6`; local CLI reports PHP `8.5.12`; AGENTS.md describes PHP 8.5. The current CI workflow now selects PHP 8.6, but local CLI still reports 8.5.12. Verify an explicitly selected compatible executable for local backend commands and PHP 8.6 in cloud setup; do not silently lower requirements or bypass platform checks.
+- Refresh for orchestration: this is now a Git repository with origin `https://github.com/hussain4real/SeeSPace.git`; inspected HEAD is `a1e8b8f` (Use PHP 8.6 for CI and refresh platform lock metadata). Working tree was clean before this documentation update. This supersedes the initial no-Git observation. No remote push or CI result was verified during this refresh.
 - `.ai/rules` was absent. Recheck it before future edits as required by AGENTS.md.
 - These observations are static inspection, not proof the scaffold builds or that authentication works. No application tests, build, migration or UI flow was run for this plan.
 
@@ -161,3 +161,43 @@ Also resolve pending-submission withdrawal, retention of unavailable prices, sta
 
 For every milestone keep: task ID; BRS IDs; files changed; dependency; acceptance evidence; status (not started/in progress/blocked/accepted); blocker/owner. Use small reviewable vertical slices rather than one giant generation request.
 At handoff report: what changed; exact candidate/baseline; checks actually run and results; checks not run and why; screenshots where relevant; unresolved decisions; next permitted milestone. Never label a mock, screenshot, CI report or source-only inspection as production validation.
+
+
+## Orchestrated sessions: local design, cloud engineering, one integration owner
+
+Aminu owns product/design decisions. The dot coordinates assignments, dependencies, evidence and handoffs. Session names below are candidates, not sessions already created. Start with one implementation worker and one independent read-only reviewer; add parallel writers only when file ownership and data contracts are stable.
+
+### Recommended session placement
+| Milestone | Lead session candidate | Supporting session and boundary | Required handoff/gate |
+|---|---|---|---|
+| M0 baseline | **Local: SeeSpace foundation coordinator** | Cloud environment preparation only after setup authorization; read-only contract review may run independently | Verified baseline, runtime, source commit, skill availability, decisions |
+| M1 direction | **Local: SeeSpace design studio** | Cloud read-only UX/requirements critique using supplied screenshots/specs, not assumed access to the Mac browser | Aminu chooses direction before page production |
+| M2 UI prototype | **Local: SeeSpace frontend studio**, continuing M1 | Independent reviewer can audit contracts/copy; browser validation stays local unless cloud browser tooling is verified | Approved F01–F07, tokens/components, screenshots, safe DTO contracts |
+| M3 foundation | **Cloud: SeeSpace domain and public portal** | Local coordinator integrates UI against agreed contracts; no simultaneous edits to shared routes/types/layouts | M2 approval and D02/D04/D07; P0 negative tests and public discovery evidence |
+| M4 lifecycle | **Cloud: SeeSpace publishing and moderation** | Separate cloud read-only security/concurrency reviewer; local visual validation of editor/operations | M3 integrated baseline, D05 revision policy, immutable reviewed-revision tests |
+| M5 enquiries | **Cloud: SeeSpace enquiries and operations** | Local coordinator handles final UI integration after contracts; cloud independent delivery/privacy review | M4 baseline, recipient/retention decisions, durable retry evidence |
+| M6 acceptance | **Cloud: SeeSpace verification** plus **Local: SeeSpace acceptance studio** | Cloud clean setup/backend/aggregate checks; local real-browser/accessibility/visual acceptance; independent security review | Same candidate commit, AT001–AT006, no unresolved launch blockers |
+| M7 later | **Cloud: SeeSpace management planning**, only after separate scope approval | Local design exploration after product decisions | D12 and separate implementation authorization |
+
+Cloud is recommended for reproducible backend/tests and work while the Mac is asleep, not because it automatically has better tools. Local is preferred for the installed design skills, current scaffold and visual feedback. If cloud setup is not ready, continue permitted local planning/design; do not block everything or claim cloud execution occurred. If the Mac is offline, cloud review can continue on its verified snapshot; local visual acceptance waits.
+
+### Coordination contract
+1. The coordinator records the current accepted commit, milestone, active session, owned files, dependencies, tests and blockers. Reuse the phase session rather than starting overlapping work.
+2. Each worker receives the BRS/design brief, approved decisions, exact base commit/branch, scope and acceptance criteria. Cloud paths are discovered in that environment; never assume the Mac path exists there. Local-only uncommitted files, global skills and browser sessions do not transfer automatically.
+3. Give each writer an isolated branch/worktree/workspace. One writer owns shared schema/migrations, policies, route definitions, global types and design tokens at a time. Freeze/review public DTO contracts before parallel work. Independent reviewers do not edit the author's workspace.
+4. Default sequence is M0 → M1 approval → M2 approval → M3 → M4 → M5 → M6. Read-only reviews, test-plan drafting and copy audits may overlap; competing implementation of the same feature may not. M5 can be split only after stable lifecycle and recipient contracts exist.
+5. Worker handoff includes diff/commit, changed files, requirement coverage, executed checks, unrun limits and screenshots where relevant. Coordinator reviews the delta, integrates only under authorization, then reruns affected and aggregate checks against the combined candidate. Passing isolated branches does not prove the integrated app passes.
+6. Never switch/rebase a working checkout another session is using. Preserve user edits; stop conflicting writes and reconcile them. Use authorized Git commits/patch artifacts to move work, not credential copying. Push/PR creation, merging and deployment remain separately scoped actions; this document update authorizes none.
+7. Product gates remain human decisions: visual direction, full UI flow acceptance, consequential policy and production release. Ordinary coding choices inside an authorized milestone are delegated; do not ask Aminu to manage every worker.
+
+### What setup is needed, and what is optional?
+- **GitHub repository:** versioned source, already configured as `hussain4real/SeeSPace`. This is not a Codex project or a runnable cloud environment. Recheck cloud GitHub access and selected branch/commit before starting a worker; a local remote URL alone proves neither.
+- **Codex desktop project:** an app entry organizing chats around the local folder. The current project catalog has no SeeSpace entry. Adding the existing folder is recommended for organization, not required to create the repository or for the dot to inspect that folder. Do not create a duplicate repository.
+- **Cloud environment:** reusable runtime/repository/tool setup. The catalog has a runnable default environment and other named environments, but no SeeSpace-specific environment. A cloud task can start with the default and access a permitted repository; a dedicated SeeSpace environment is recommended for repeatable PHP/frontend checks, not a prerequisite to local design.
+- **Session/task:** one work conversation using a selected environment. Aminu does not need to start one manually for every phase; the dot can coordinate authorized tasks once access/setup is ready. Creating an app project alone does not install dependencies or transfer source.
+
+Recommended one-time user setup: optionally add `/Users/amisha/www/seeSpace` as a local Codex project; before cloud implementation, use **Settings → Codex Cloud → Environments → Create environment**, select the existing SeeSpace repository, request compatible PHP 8.6 and the lockfile-compatible Node/toolchain, isolated test database, fake mail/queue/storage and frontend/browser test tools where supported. Review the setup report and publish only when checks work. The dot can prepare and guide this setup when authorized; there is no need for the user to hand-start a cloud coding session now. Supply GitHub access only if the picker actually requests it. Do not add production credentials or data.
+
+Carry repository skills into cloud through the checked-out source if tracked; verify them there. Global Mac Impeccable/frontend-design/modern-web-guidance/TypeScript skills were found locally, not in a verified cloud installation. Keep M1/M2 local or explicitly authorize a supported skill installation/transfer; never promise automatic inheritance. The updated plan/prompts remain local edits until an authorized commit/push or file handoff makes them available to cloud workers.
+
+Verification at this update: Mac and dot cloud computer listed connected; project and saved-cloud catalogs read; SeeSpace Git origin/HEAD/status, PHP CLI/requirement/CI workflow and relevant skill paths inspected. No cloud workspace was launched, no dependency/runtime changed, no project created, no implementation/tests/build run and no push performed. Product setup guidance checked against [official Cloud environments documentation](https://learn.chatgpt.com/docs/environments/cloud-environments) on 12 November 2026.

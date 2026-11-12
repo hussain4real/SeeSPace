@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>SeeSpace — Phase 1 visual directions</title>
+        <style>
+            :root {
+                color-scheme: light;
+                --ink: #18233b;
+                --muted: #4a5875;
+                --line: #d9dfeb;
+                --surface: #eef2fc;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                background: white;
+                color: var(--ink);
+                font:
+                    16px/1.55 system-ui,
+                    sans-serif;
+            }
+            main {
+                max-width: 1480px;
+                margin: auto;
+                padding: 32px;
+            }
+            a {
+                color: #244ac7;
+                text-underline-offset: 4px;
+            }
+            a:focus-visible {
+                outline: 2px solid #244ac7;
+                outline-offset: 4px;
+            }
+            .skip {
+                position: absolute;
+                top: -100px;
+            }
+            .skip:focus {
+                top: 8px;
+                background: white;
+                padding: 12px;
+            }
+            header {
+                padding-bottom: 32px;
+                border-bottom: 1px solid var(--line);
+            }
+            .brand {
+                font-size: 24px;
+                font-weight: 750;
+                letter-spacing: -0.03em;
+            }
+            h1 {
+                font-size: clamp(32px, 4vw, 56px);
+                line-height: 1.1;
+                letter-spacing: -0.03em;
+                margin: 32px 0 20px;
+                text-wrap: balance;
+            }
+            h2 {
+                font-size: 32px;
+                line-height: 1.2;
+                letter-spacing: -0.025em;
+                margin: 0 0 16px;
+            }
+            h3 {
+                font-size: 20px;
+                margin: 0 0 12px;
+            }
+            p {
+                max-width: 74ch;
+            }
+            .intro {
+                color: var(--muted);
+                font-size: 19px;
+            }
+            .status {
+                display: inline-block;
+                padding: 8px 12px;
+                background: var(--surface);
+                font-weight: 600;
+            }
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px 28px;
+                margin-top: 24px;
+            }
+            nav a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+            }
+            section {
+                padding: 40px 0;
+                border-bottom: 1px solid var(--line);
+                scroll-margin-top: 20px;
+            }
+            .comparison {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+                margin-top: 28px;
+            }
+            .comparison article {
+                padding: 24px;
+                background: var(--surface);
+            }
+            .comparison article:first-child {
+                background: #edf5f0;
+            }
+            figure {
+                margin: 28px 0 36px;
+            }
+            figure a {
+                display: block;
+            }
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            figcaption {
+                margin-top: 12px;
+                color: var(--muted);
+            }
+            .swatches {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                padding: 0;
+                list-style: none;
+            }
+            .swatches li {
+                padding: 8px 12px;
+                border: 1px solid var(--line);
+            }
+            .swatches span {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                vertical-align: middle;
+                border: 1px solid var(--line);
+                background: var(--swatch);
+            }
+            .facts {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+            .facts article {
+                border-top: 1px solid var(--line);
+                padding-top: 16px;
+            }
+            ul {
+                padding-left: 22px;
+                max-width: 78ch;
+            }
+            li {
+                margin-bottom: 8px;
+            }
+            footer {
+                padding: 32px 0;
+                color: var(--muted);
+            }
+            @media (max-width: 700px) {
+                main {
+                    padding: 20px;
+                }
+                .comparison,
+                .facts {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                }
+                section {
+                    padding: 32px 0;
+                }
+                h2 {
+                    font-size: 28px;
+                }
+                .intro {
+                    font-size: 17px;
+                }
+            }
+            @media print {
+                main {
+                    padding: 0;
+                }
+                nav,
+                .skip {
+                    display: none;
+                }
+                figure {
+                    break-inside: avoid;
+                }
+                section {
+                    break-before: page;
+                }
+                a {
+                    color: inherit;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <a class="skip" href="#directions">Skip to directions</a>
+        <main>
+            <header>
+                <div class="brand">SeeSpace / Design studio</div>
+                <h1>Two ways to find your next place.</h1>
+                <p class="intro">
+                    Phase 1 visual exploration for a Nigeria-first houses and
+                    land marketplace. The same fictional content, two different
+                    priorities: spacious discovery or compact comparison.
+                </p>
+                <p class="status">
+                    12 November 2026 · Review candidate · Aminu's selection
+                    pending
+                </p>
+                <p>
+                    These are static generated mockups. Buttons inside the
+                    images do not work. The application prototype starts only
+                    after a direction is selected.
+                </p>
+                <nav aria-label="Review navigation">
+                    <a href="#courtyard">A / Open Courtyard</a>
+                    <a href="#index">B / City Index</a>
+                    <a href="#decision">Decision &amp; limits</a>
+                    <a href="README.md">Detailed design notes</a>
+                    <a
+                        href="../../SeeSpace_Business_Requirements_Specification_v1_1.docx"
+                        >Original BRS v1.1</a
+                    >
+                </nav>
+            </header>
+            <section id="directions" aria-labelledby="compare-title">
+                <h2 id="compare-title">
+                    Choose the priority, then the palette.
+                </h2>
+                <div class="comparison">
+                    <article>
+                        <h3>A / Open Courtyard</h3>
+                        <p>
+                            Large property imagery, a welcoming search-led
+                            homepage and room around the important facts. A
+                            public experience built for visual discovery.
+                        </p>
+                        <p>
+                            <strong>Tradeoff:</strong> more scrolling and image
+                            bandwidth. Good photography matters.
+                        </p>
+                    </article>
+                    <article>
+                        <h3>B / City Index</h3>
+                        <p>
+                            A compact directory with a location rail, aligned
+                            amounts and inventory close to the search controls.
+                            Built for frequent comparisons.
+                        </p>
+                        <p>
+                            <strong>Tradeoff:</strong> denser content and longer
+                            price wrapping. Keep the public shell from feeling
+                            administrative.
+                        </p>
+                    </article>
+                </div>
+                <p>
+                    <strong>Recommendation: A.</strong> Open Courtyard best
+                    supports the brief's welcoming public marketplace. This
+                    recommendation does not select it.
+                </p>
+            </section>
+            <section id="courtyard" aria-labelledby="a-title">
+                <h2 id="a-title">A / Open Courtyard</h2>
+                <p>
+                    Photography leads; purpose and price remain explicit. True
+                    white, jade accents and a spacious humanist type treatment.
+                    Proposed implementation typeface: Public Sans.
+                </p>
+                <ul
+                    class="swatches"
+                    aria-label="Proposed Open Courtyard palette"
+                >
+                    <li>
+                        <span style="--swatch: #155848"></span>Action #155848
+                    </li>
+                    <li><span style="--swatch: #18332d"></span>Text #18332D</li>
+                    <li>
+                        <span style="--swatch: #edf5f0"></span>Surface #EDF5F0
+                    </li>
+                </ul>
+                <figure>
+                    <a href="open-courtyard-overview.png"
+                        ><img
+                            src="open-courtyard-overview.png"
+                            width="1536"
+                            height="1024"
+                            alt="Open Courtyard: desktop homepage with equal Rent and Buy controls and large house photograph; mobile sample inventory and rental-house detail."
+                    /></a>
+                    <figcaption>
+                        Desktop home; mobile discovery and house detail. Open
+                        the image for full-resolution inspection.
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a href="open-courtyard-responsive.png"
+                        ><img
+                            src="open-courtyard-responsive.png"
+                            width="1536"
+                            height="1024"
+                            alt="Open Courtyard: desktop rental results and house detail, with a mobile homepage placing search before photography and sample listings."
+                    /></a>
+                    <figcaption>
+                        Desktop filtered rental results and detail; mobile home.
+                        The rental result contains only the house.
+                    </figcaption>
+                </figure>
+            </section>
+            <section id="index" aria-labelledby="b-title">
+                <h2 id="b-title">B / City Index</h2>
+                <p>
+                    Search and comparison lead. Cobalt highlights, a location
+                    rail and smaller inventory imagery create a deliberately
+                    denser rhythm. Proposed implementation typeface: Source Sans
+                    3.
+                </p>
+                <ul class="swatches" aria-label="Proposed City Index palette">
+                    <li>
+                        <span style="--swatch: #244ac7"></span>Action #244AC7
+                    </li>
+                    <li><span style="--swatch: #18233b"></span>Text #18233B</li>
+                    <li>
+                        <span style="--swatch: #eef2fc"></span>Surface #EEF2FC
+                    </li>
+                </ul>
+                <figure>
+                    <a href="city-index-overview.png"
+                        ><img
+                            src="city-index-overview.png"
+                            width="1536"
+                            height="1024"
+                            alt="City Index: desktop search-first directory with a location rail and horizontal inventory rows; mobile sample inventory and house detail."
+                    /></a>
+                    <figcaption>
+                        Desktop home; mobile discovery and house detail. City
+                        labels are examples, not approved launch coverage.
+                    </figcaption>
+                </figure>
+                <figure>
+                    <a href="city-index-responsive.png"
+                        ><img
+                            src="city-index-responsive.png"
+                            width="1536"
+                            height="1024"
+                            alt="City Index: compact desktop rental results and house detail with an enquiry column, alongside the mobile search-first homepage."
+                    /></a>
+                    <figcaption>
+                        Desktop filtered rental results and detail; mobile home.
+                        Compact rows replace the desktop rail on mobile.
+                    </figcaption>
+                </figure>
+            </section>
+            <section aria-labelledby="sample-title">
+                <h2 id="sample-title">The same fictional listings.</h2>
+                <div class="facts">
+                    <article>
+                        <h3>Courtyard house in Ibadan</h3>
+                        <p>
+                            Oluyole, Ibadan<br />For rent · NGN 250,000 /
+                            month<br />3 bedrooms · 2 bathrooms
+                        </p>
+                    </article>
+                    <article>
+                        <h3>Residential land in Abuja</h3>
+                        <p>
+                            Lugbe, Abuja<br />For sale · NGN 18,000,000 total<br />600
+                            m² · No residential attributes
+                        </p>
+                    </article>
+                </div>
+                <p>
+                    Generated imagery, invented properties and prices. No real
+                    owners or contact details. These visual-study aliases do not
+                    replace the source brief's SS101–SS106 fixtures. NGN,
+                    monthly rent and city coverage are illustrative; policy
+                    decisions remain open.
+                </p>
+            </section>
+            <section id="decision" aria-labelledby="decision-title">
+                <h2 id="decision-title">A, B, or a specific revision?</h2>
+                <p>
+                    Aminu selects the visual direction before M2 begins.
+                    Palette, type and density remain proposals. No full
+                    prototype, application logic or deployment is authorized by
+                    this review.
+                </p>
+                <ul>
+                    <li>
+                        The BRS remains unchanged and retains its draft/proposed
+                        requirements. Later Codex-only instructions supersede
+                        its historical Claude workflow.
+                    </li>
+                    <li>
+                        Public, publisher and operations shells remain separate.
+                        Real auth, settings and teams stay intact.
+                    </li>
+                    <li>
+                        These images do not prove responsive behavior,
+                        accessibility, filtering, security or working enquiries.
+                    </li>
+                    <li>
+                        M2 must complete galleries, descriptions, availability,
+                        land-sale detail, reporting, error states and the
+                        F01–F07 journeys.
+                    </li>
+                    <li>
+                        Known polish notes: widen B's price column, replace A's
+                        search-shaped mobile overview heading with a proper
+                        heading and labelled location field, and label the
+                        mobile menu.
+                    </li>
+                </ul>
+                <p>
+                    <a href="../../plans/SeeSpace-Progress-2026-11-12.md"
+                        >Progress and decision ledger</a
+                    >
+                    ·
+                    <a
+                        href="../../plans/SeeSpace-Implementation-Plan-2026-11-12.md"
+                        >Implementation plan</a
+                    >
+                </p>
+            </section>
+            <footer>
+                Prepared in Codex. Four reviewed image-generation probes; source
+                BRS preserved in docs. No final direction selected.
+            </footer>
+        </main>
+    </body>
+</html>

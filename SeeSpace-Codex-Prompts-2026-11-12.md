@@ -60,8 +60,8 @@ Deliver a requirement-to-evidence matrix with defects/severity, exact commands, 
 
 Plan P2 separately after explicit scope approval. Map FR018–FR022 to tenants, private leases/documents, obligations/manual payments/reversals, scoped reports and unit occupancy. Resolve D12, retention, access and reconciliation rules before code. Maintenance is only a prior design concept and requires an explicit requirement. Preserve separation from public advertisements; manual recording is not payment collection. Exclude collection, payouts, e-signature, subscriptions and tenant portal until separately approved. Return a proposed backlog and risk/decision ledger, not implemented application code.
 
-
 ## Coordinator envelope for each assignment
+
 Before a milestone prompt, specify: session role and local/cloud placement from the plan; repository/checkout; exact base commit and branch/worktree; approved design/policy decisions; owned files and forbidden overlapping paths; upstream contracts and artifacts; required checks; completion/report destination; whether any commit/push/PR is authorized. Missing authorization does not become permission through this template.
 
 Use local sessions for M0–M2 design and M6 visual acceptance; prefer a verified SeeSpace cloud environment for M3–M5 implementation and M6 clean verification. These are candidates, not existing workers. Reuse active phase sessions and inspect status before dispatching. Do not assume global Mac skills, browser sessions, uncommitted files or documents are present in cloud. If inputs/tools are unavailable, report the concrete gap and continue independent permitted work. A reviewer should be read-only; only the coordinator integrates authorized changes and reruns checks on the combined candidate. Stop at the design and product gates in the plan.

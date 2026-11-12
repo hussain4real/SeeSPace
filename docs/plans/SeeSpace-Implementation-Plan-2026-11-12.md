@@ -1,12 +1,33 @@
 # SeeSpace implementation plan
 
-Version 1.1 • 12 November 2026 • Planning baseline and orchestration map for Aminu
+Version 1.2 • 12 November 2026 • Planning baseline, orchestration map and Phase 1 tracking for Aminu
 
 ## Direction and how to use this plan
 
 Build SeeSpace entirely in Codex, including visual design, frontend and application logic. Work in the existing `/Users/amisha/www/seeSpace` scaffold, not a replacement starter kit. First approve a visual direction; then complete and approve a working UI prototype; only then implement marketplace business logic. Use the companion `SeeSpace-Codex-Prompts-2026-11-12.md` one milestone at a time. This document does not start implementation or authorize deployment.
 
 The first product is a Nigeria-first public property marketplace. Anyone can browse houses and land for rent or sale without signing in. Publishers maintain inventory, moderators control publication, and seekers send nonbinding enquiries. Property management follows separately. Keep the property asset distinct from its public advertisement so later private records do not contaminate public responses.
+
+### Current checkpoint: Phase 1 review, direction not selected
+
+Aminu subsequently authorized starting Phase 1 and requested the original BRS in `docs/` plus progress tracking. That authorization supersedes the planning-only status for this visual exploration; it does not authorize M2 or marketplace logic. The current scoped delivery contains two visual directions, four static desktop/mobile boards, rationale, proposed tokens and a local review page. **M1 remains in progress until Aminu selects a direction.**
+
+- [Visual review and design notes](../design/phase-1/README.md) · [Local review page](../design/phase-1/review.html)
+- [Original BRS v1.1 DOCX](../SeeSpace_Business_Requirements_Specification_v1_1.docx), preserved unchanged with provenance and public-repository review recorded in the design notes.
+- [Progress, evidence and decision ledger](SeeSpace-Progress-2026-11-12.md), including completed artifacts, unrun checks and remaining gates.
+- Baseline for this work: clean `dev` at `e45770f3371ff4ae72222a690e3ce527922ee29b`; remote confirmed at the same commit before the scoped branch was created. Active-project inspection found this Phase 1 session and no overlapping SeeSpace writer.
+- Current runtime check: `herd php --version` reports PHP **8.6.0RC5**. Use Herd's project-aware commands, not the older global CLI observation below. Installed direct packages include Laravel **13.42.0**, Inertia Laravel **3.7.0**, Fortify **1.42.0** and Wayfinder **0.1.23**. No runtime or dependencies changed.
+- The current Codex catalog contains the SeeSpace project and this active design session. Cloud setup was reported validated in the assignment; this task did not rerun cloud setup or historical tests. Older catalog/setup paragraphs below describe their earlier inspection checkpoint.
+
+| Milestone | Current status                      | Evidence / gate                                                                                                      |
+| --------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| M0        | In progress                         | Source/runtime/scaffold inspection done; full authority matrix and public-prop contracts remain future baseline work |
+| M1        | In progress; review candidate ready | A: Open Courtyard; B: City Index. Aminu must select; recommendation A is not approval                                |
+| M2        | Not started                         | Requires explicit M1 selection; no Vue prototype produced                                                            |
+| M3–M6     | Not started by this task            | Require their existing design, policy, security and acceptance gates                                                 |
+| M7        | Not started                         | Separate later authorization                                                                                         |
+
+The unchanged source BRS and design brief retain historical Claude workflow wording. Codex-only work in this existing scaffold takes precedence; proposed business rules and open decisions remain proposed/open. Phase 1 visual exploration must not be counted as BRS P1 marketplace completion.
 
 ### Source of truth and conflicts
 
